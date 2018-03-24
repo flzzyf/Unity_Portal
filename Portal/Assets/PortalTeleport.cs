@@ -18,22 +18,24 @@ public class PortalTeleport : MonoBehaviour {
 
             if(dotProduct < 0)
             {
-                float rotationDiff = Quaternion.Angle(transform.rotation, receiver.rotation);
+                float rotationDiff = -Quaternion.Angle(transform.rotation, receiver.rotation);
                 rotationDiff += 180;
+                print(dotProduct);
+
                 player.Rotate(Vector3.up, rotationDiff);
 
                 Vector3 posOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
                 player.position = receiver.position + posOffset;
 
                 playerInThePortal = false;
-                print("juice");
             }
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player"){
+        if(other.tag == "Player")
+        {
             playerInThePortal = true;
         }
     }
