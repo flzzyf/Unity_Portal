@@ -9,14 +9,10 @@ public class PortalTextureSetup : MonoBehaviour {
 
 	void Start () 
     {
-        if(cameraB.targetTexture != null)
-        {
-            cameraB.targetTexture.Release();
-        }
+        cameraB.targetTexture.height = Screen.height;
+        cameraB.targetTexture.width = Screen.width;
+        cameraB.targetTexture.depth = 24;
 
-        cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-
-        cameraMatB.mainTexture = cameraB.targetTexture;
 	}
 
 }
